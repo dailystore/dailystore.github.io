@@ -4634,9 +4634,6 @@ a .img-responsive {
     width: 100%;
     height: 100%
   }
-  .list-dot-orange {
-    font-size: 9px
-  }
 }
 img.width-100p {
   width: 100%!important
@@ -4780,6 +4777,14 @@ ul {
   border-radius: 5px;
   content: ""
 }
+@media (max-width:767px) {
+  .list-dot-orange {
+    font-size: 9px
+  }
+  .list-disc-dark-blue li:before {
+    top: 5px
+  }
+}
 .dl-list-indent {
   margin-bottom: 0
 }
@@ -4831,9 +4836,6 @@ ul {
   font-size: 1.5rem
 }
 @media (max-width:767px) {
-  .list-disc-dark-blue li:before {
-    top: 5px
-  }
   .text-emphasis {
     font-size: 1rem;
     line-height: 1.6rem
@@ -5281,8 +5283,22 @@ fieldset[disabled] .btn-orange:hover {
 }
 .navbar-default {
   min-height: 90px;
-  background-color: #fff;
-  border-bottom: 0
+  margin-bottom: 0;
+  background-color: rgba(255,255,255,.95);
+  border-bottom: 0;
+  -webkit-transition: .3s all ease;
+  transition: .3s all ease
+}
+.navbar-default.fixed {
+  min-height: 74px;
+  -webkit-transition: .3s all ease;
+  transition: .3s all ease
+}
+.navbar-default.fixed .navbar-nav {
+  margin-top: 14px
+}
+.navbar-default.fixed .logo {
+  width: 60px
 }
 .navbar-default .logo {
   margin-top: 0;
@@ -6257,6 +6273,11 @@ a.thumbnail {
   font-weight: 700;
   text-align: center
 }
+@media (max-width:767px) {
+  .title-double-dash {
+    width: 100%
+  }
+}
 .title-double-dash .cell {
   padding-right: 15px;
   padding-left: 15px
@@ -6302,6 +6323,13 @@ a.thumbnail {
 .box-shadow-yellow-spread-lg {
   -webkit-box-shadow: 0 0 30px 20px #ff0;
   box-shadow: 0 0 30px 20px #ff0
+}
+.main-visual img {
+  width: 100%
+}
+.main-visual .title {
+  margin-top: 0;
+  margin-bottom: 0
 }
 .footer {
   padding-top: 15px;
