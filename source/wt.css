@@ -212,7 +212,7 @@ hr {
 
 .bar {
 	color: white;
-	background-color: #08274A
+	background-color: #1498d5
 }
 
 .smallmenu {
@@ -301,7 +301,7 @@ hr {
 	padding: 1ex 16px;
 	padding: 1ex 1rem;
 	display: block;
-	background: #08274A
+	background: #1498d5
 }
 
 .header#active>a {
@@ -358,7 +358,7 @@ hr {
 }
 
 .smallmenu ul li.header ul a {
-	color: #dddddd
+	color: #fff
 }
 
 .toc {
