@@ -62,7 +62,7 @@ h1 {
 	font-size: 150%;
 	line-height: 140%;
 	margin-top: 48px;
-	color: #32659C
+	color: #2b5686
 }
 
 h2 {
@@ -70,7 +70,7 @@ h2 {
 	font-size: 125%;
 	line-height: 140%;
 	margin-top: 48px;
-	color: #32659C
+	color: #2b5686
 }
 
 h3 {
@@ -78,7 +78,7 @@ h3 {
 	font-size: 112%;
 	line-height: 140%;
 	margin-top: 12px;
-	color: #32659C
+	color: #2b5686;
 }
 
 ul {
@@ -102,17 +102,17 @@ img {
 }
 
 h1 a {
-	color: #32659C;
+	color: #2b5686;
 	text-decoration: none
 }
 
 h2 a {
-	color: #32659C;
+	color: #2b5686;
 	text-decoration: none
 }
 
 h3 a {
-	color: #32659C;
+	color: #2b5686;
 	text-decoration: none
 }
 
@@ -305,7 +305,7 @@ hr {
 }
 
 .header#active>a {
-	background: #32659C
+	background: #2b5686
 }
 
 .header#active>a:hover {
@@ -556,11 +556,16 @@ height: auto;
 }
 
 .logo-text {
-	width: 590px;
+	width: 390px;
 	padding-right: 20px;
 	padding-left: 20px;
 	float: right;
-	margin: 0 auto 20px;
+	margin: 5px 350px 10px auto;
+	font-size: 100% !important;
+}
+
+.logo {
+	width: 150px;
 }
 
 .member {
