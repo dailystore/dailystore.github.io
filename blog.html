@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <title>
+
+    KIE.IO
+
+  </title>
+  <link rel="Stylesheet" type="text/css" href="source/wt.css">
+  <link rel="shortcut icon" type="image/x-icon" href="source/favicon.png">
+</head>
+
+<body class="normal">
+
+  <div class="pagelogo">
+    <div class="smalllogo">
+      <a href="./">
+        <img class="logo" src="source/logo.png" alt="KIE.IO">
+      </a>
+
+      <h3 class="logo-text">
+        Think smart - Code wisely - Optimize business
+      </h3>
+    </div>
+
+
+    <div style="clear: both;"></div>
+
+  </div>
+
+  <div class="bar">
+    <div class="smallmenu">
+      <ul class="menu">
+        <li class="header">
+          <a href="index.html">Services</a>
+          <ul class="submenu">
+            <li class="subheader">
+              <a href="software.html">Development</a>
+            </li>
+            <li class="subheader">
+              <a href="outsourcing.html">Outsourcing</a>
+            </li>
+            <li class="subheader">
+              <a href="digitization.html">Digitization</a>
+            </li>
+            <li class="subheader">
+              <a href="javascript:void();">Advice</a>
+            </li>
+          </ul>
+        </li>
+        <li class="header">
+          <a href="about.html">About</a>
+          <ul class="submenu">
+            <li class="subheader">
+              <a href="about-us.html">Who We Are</a>
+            </li>
+            <li class="subheader">
+              <a href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </li>
+
+        <li class="header">
+          <a href="portfolio.html">Portfolio</a>
+        </li>
+        <li class="header" id="active">
+          <a href="blog.html">Blog</a>
+        </li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div>
+
+
+  </div>
+
+  <div class="body">
+    <div class="text">
+      <h2>
+        TasteTruyen PhoneGap App Audio Playing Problem
+      </h2>
+
+      <p style="text-align: right">
+        <small>September 19, 2017</small>
+      </p>
+
+      <p>
+        Attempt to fix audio playing problem (described below) on the specific Chrome version 67.0.3396.87 of Sony X1A
+        Plus model with Android 8.0.0 and Chrome version 67.0.X.X (also the forcefully updated 68.0.3440.70) of Sony
+        Xperia Z4 (SO - 03G Japan version) with Android 7.0.0. The problem is this warning (in WebView console) keeps
+        popping up a lot right after the play button is clicked to start playing, preventing audio from being played: 6
+        The AudioContext was not allowed to start. It must be resumed (or created) from a user gesture event handler.
+        The number 6 at the beginning denotes how many times this warning repeated. The only way to successfully start
+        playing is to repeat these exact steps: First, after iframe finished loading, click the play button (the
+        warning will appear). Next, almost immediately jump ahead or back by clicking (or sliding) on the seek bar.
+        Make sure you jump before the warning count hit 7 or 8 (6 or below is fine). Too late and the SoundCloud iframe
+        stucks forever and won't budge no matter how many jumps we throw at it (but a simple iframe reload could reset
+        the state to the origin and we can repeat the steps again). Most of the times, the steps above will work and
+        the sound is played but it's extremely awkward. Some suspects as to how it happens like that: Somehow, a queue
+        within SoundCloud iframe, being used to store cross-origin commands (play, pause, seek) sent by
+        window.postMessage() from us for gradual processing, get stuck from receiving commands repeatedly but unable to
+        process due to being blocked by the warning. As a consequence, subsequent commands are delayed indefinitely but
+        we have no way to resolve it externally, except fiddling with codes from SoundCloud. A very small but possible
+        chance of a browser bug (in this case, specifically Chrome) that though we strictly follow official
+        instructions and synchronously send play command to SoundCloud iframe only from a "click" event handler
+        registered on our play button, the gesture-token necessary to acquire auto-play permission somehow can't reach
+        the inside of the iframe. Only by waiting for the "click" event to happen at least 1 more time could the token
+        finally reach its intended destination and grant the necessary permission. Some details references:
+        https://stackoverflow.com/questions/46934039/what-is-the-gesture-media-html-attribute
+        https://hackernoon.com/unlocking-web-audio-the-smarter-way-8858218c0e09
+        https://github.com/processing/p5.js-sound/issues/249
+        https://bugs.chromium.org/p/chromium/issues/detail?id=835767 ***
+        https://developers.google.com/web/updates/2017/09/autoplay-policy-changes ***
+        https://sites.google.com/a/chromium.org/dev/audio-video/autoplay
+        https://github.com/WICG/gesture-delegation/blob/master/explainer.md [...] An AudioContext is said to be allowed
+        to start if the user agent and the system allow audio output in the current context. In other words, if the
+        AudioContext control thread state is allowed to transition from suspended to running. Note: For example, a user
+        agent could require that an AudioContext control thread state change to running is triggered by user activation
+        (as described in [HTML]). [...] (excerpt from https://webaudio.github.io/web-audio-api/#AudioContext) [...] An
+        algorithm is triggered by user activation if any of the following conditions is true: + The task in which the
+        algorithm is running is currently processing an activation behavior whose click event's isTrusted attribute is
+        true. + The task in which the algorithm is running is currently running the event listener for an event whose
+        isTrusted attribute is true and whose type is one of: change click contextmenu dblclick mouseup pointerup reset
+        submit touchend + The task in which the algorithm is running was queued by an algorithm that was triggered by
+        user activation, and the chain of such algorithms started within a user-agent defined timeframe. For example,
+        if a user clicked a button, it might be acceptable for a popup to result from that after 4 seconds, but it
+        would likely not be acceptable for a popup to result from that after 4 hours. [...] (excerpt from
+        https://html.spec.whatwg.org/multipage/interaction.html#triggered-by-user-activation)
+      </p>
+
+      <hr />
+
+      <div class="pb100"></div>
+    </div>
+  </div>
+
+</body>
+
+</html>
