@@ -452,7 +452,7 @@ p.quoted_end:after {
 }
 
 .footer {
-	margin: 5ex 0 0 0;
+	margin: 5px 0 0 0;
 	padding-top: 1ex;
 	padding-bottom: 2ex;
 	color: #08274A;
